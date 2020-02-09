@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>activity_4.3</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+   <div class="card template" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<script>
+var apiendpt = "https://data.cityofchicago.org/resource/xzkq-xp2w.json?$LIMIT=100"
+fetch(apiendpt).then(res=>{return res.json()})
+    .then(json=>{
+    for(var v of json){
+    var c = document.querySelector('.template').cloneNode(true);
+    c.classList.remove("template");
+    c.childNodes[1].childNodes[1].textContent=v.name;
+    c.childNodes[1].childNodes[3].textContent=v.department;
+    c.childNodes[1].childNodes[5].textContent=v.annual_salary;
+    //console.log(c.childNodes[1].childNodes);//[1].textContent=v.name;
+    /*var np = document.createElement("p");
+    np.textContent="Name: "+v.name+" ; "+"Department: "+v.department;*/
+    document.body.appendChild(c);}
+});
+</script>
+</body>
+
+</html>
