@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>activity_5.1</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+   
+<script>
+var apiendpt = "https://api.nasa.gov/planetary/apod?api_key=saw1lfYIc97UblwDcJAhBBglIBy2NM2SlhQ93zmP"
+fetch(apiendpt).then(res=>{return res.json()})
+    .then(json=>{
+    console.log(json);
+    var h = document.createElement("h1");
+    h.textContent=json.title;
+    document.body.appendChild(h);
+    var pd = document.createElement("p");
+    pd.textContent=json.date;
+    document.body.appendChild(pd);
+    var pe = document.createElement("p");
+    pe.textContent=json.explanation;
+    document.body.appendChild(pe);
+    var i = document.createElement("img");
+    document.body.appendChild(i);
+    document.querySelector("img").src=json.hdurl;
+});
+</script>
+</body>
+
+</html>
