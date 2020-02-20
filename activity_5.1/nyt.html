@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>activity_5.1</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+   
+<script>
+var apiendpt = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=Chicago&api-key=l4TaX4wafpJ0237rMRRx3MSEFSoeWfAF"
+fetch(apiendpt).then(res=>{return res.json()})
+    .then(json=>{
+    console.log(json);
+    for(var v of json.response.docs){
+    var h = document.createElement("h1");
+    h.textContent=" - "+v.headline.main;
+    document.body.appendChild(h);}
+});
+</script>
+</body>
+
+</html>
