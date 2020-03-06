@@ -12,15 +12,16 @@
   <body>
     <!--The div element for the map -->
     <div id="map"></div>
+      <script src="data.js"></script>
     <script>
 // Initialize and add the map
 function initMap() {
-  
-  var uic = {lat: 41.8698, lng: -87.6496};
-  
+    var uic = {lat: 41.8698, lng: -87.6496};
   var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 15, center: uic});
-  
+      document.querySelector('#map'), {zoom: 11,center:uic});
+   for(var a of inspection_data){
+   console.log(a);
+   let pos ={lat:parseFloat(a.latitude),lng:parseFloat(a.longitude)}; 
    var contentString = '<div id="content">'+
       '<div id="siteNotice">'+'</div>'+
       '<img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/University_of_Illinois_at_Chicago_circle_logo.svg/1200px-University_of_Illinois_at_Chicago_circle_logo.svg.png" alt="uic" height="50" width="50>'+
@@ -39,11 +40,11 @@ function initMap() {
   var marker = new google.maps.Marker({
     position: pos,
     map: map,
-    title: 'UIC'
+    title: a.dba_name
   });
   marker.addListener('click', function() {
     infowindow.open(map, marker);
-  });
+  });}
 }
     </script>
     <!--Load the API from the specified URL
